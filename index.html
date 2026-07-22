@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Preview Hover</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Computer Image Preview</h1>
+    </header>
+
+    <main id="main-content">
+        <!-- Preview Section -->
+        <div id="image">
+            <p id="text">Hover over an image below to display here.</p>
+        </div>
+
+        <!-- Image Gallery -->
+        <section class="gallery">
+            <img id="pic1" 
+                 src="Macbook Air.webp" 
+                 alt="Macbook Air"
+                 onmouseover="upDate(this)"
+                 onmouseout="undo()">
+            
+            <img id="pic2" 
+                 src="Macbook Pro.webp" 
+                 alt="Macbook Pro"
+                 onmouseover="upDate(this)"
+                 onmouseout="undo()">
+            
+            <img id="pic3" 
+                 src="Windows Surface.webp" 
+                 alt="Windows Surface"
+                 onmouseover="upDate(this)"
+                 onmouseout="undo()">
+            
+            <img id="pic4" 
+                 src="Dell Inspiron.webp" 
+                 alt="Dell Inspiron"
+                 onmouseover="upDate(this)"
+                 onmouseout="undo()">
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Computer Comparison</p>
+    </footer>
+
+    <script>
+        // upDate function - Updates the preview when hovering over an image
+        function upDate(previewPic) {
+            console.log("upDate function triggered");
+            console.log("previewPic:", previewPic);
+            console.log("alt:", previewPic.alt);
+            console.log("src:", previewPic.src);
+
+            // Update the text of the element with id 'image'
+            document.getElementById("image").textContent = previewPic.alt;
+
+            // Update the background image of the element with id 'image'
+            document.getElementById("image").style.backgroundImage = `url('${previewPic.src}')`;
+            document.getElementById("image").style.color = "rgb(255,255,255)";
+
+        }
+
+        // undo function - Restores the original state when mouse leaves
+        function undo() {
+            console.log("undo function triggered");
+
+            // Reset the text back to the original
+            document.getElementById("image").textContent = "Hover over an image below to display here.";
+
+            // Reset the background image back to empty
+            document.getElementById("image").style.backgroundImage = "url('')";
+            document.getElementById("image").style.color = "rgb(0,0,0)";
+            
+        }
+    </script>
+</body>
+</html>
